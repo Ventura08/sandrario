@@ -29,9 +29,7 @@ botaoMenu?.addEventListener('click', () => {
         />
         <p className="cabecalho__pag">Página de Início</p>
       </header>
-      <main className="principal">
-        {props.children}
-      </main>
+      
       <nav className="menu-lateral">
         <img
           src="logo.png"
@@ -58,6 +56,10 @@ botaoMenu?.addEventListener('click', () => {
         </a>
       </nav>
       
+      <main className="principal">
+        {props.children}
+      </main>
+          
     </div>
   );
 };
