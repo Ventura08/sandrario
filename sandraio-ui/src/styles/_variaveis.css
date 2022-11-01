@@ -1,0 +1,30 @@
+:root {
+    --branco: #ffffff;
+    --preto: #000000;
+
+    --roxo-claro: #8B5CF6;
+    --roxo-medio: #633BBC;
+    --roxo-escuro: #4A357D;
+
+    --roxo-cinza: #443E54;
+    --roxo-cinza-escuro: #2A2634;
+
+    --cinza-claro: #A1A1AA;
+    --cinza-medio-claro: #18181B ;
+    --cinza-medio-escuro: #15191C ;
+    --cinza-escuro: #121214 ; 
+
+
+    --fonte-corpo: 'Montserrat', sans-serif;
+    --fonte-titulo-destaque: 'Elsie Swash Caps', cursive;
+
+    --peso-titulo-destaque: 900;
+    --peso-botao: 700;
+    --peso-destaque: 700;
+
+    --tamanho-corpo: 1rem;
+    --tamanho-titulo: 1.375rem;
+    --tamanho-titulo-destaque: 4rem;
+    --tamanho-destaque: 1.375rem;
+
+}
