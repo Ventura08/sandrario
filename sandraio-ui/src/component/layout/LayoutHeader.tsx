@@ -75,6 +75,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { ReactElement, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 
@@ -98,18 +99,47 @@ const LayoutHeader = (props: ChildrenProps) => {
           items={[
             {
               key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
+              icon: (
+                <Link to="/">
+                  <div className="icon-style">
+                    <UserOutlined />
+                  </div>
+                </Link>
+              ),
+              label: 'Home',
             },
             {
               key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
+              icon: (
+                <Link to="/cadastro">
+                  <div className="icon-style">
+                    <UserOutlined />
+                  </div>
+                </Link>
+              ),
+              label: 'Cadastro',
             },
             {
               key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
+              icon: (
+                <Link to="/agendamento">
+                  <div className="icon-style">
+                    <UserOutlined />
+                  </div>
+                </Link>
+              ),
+              label: 'Agendamento',
+            },
+            {
+              key: '4',
+              icon: (
+                <Link to="/equipe">
+                  <div className="icon-style">
+                    <UserOutlined />
+                  </div>
+                </Link>
+              ),
+              label: 'Equipe',
             },
           ]}
         />
