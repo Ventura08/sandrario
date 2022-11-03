@@ -115,7 +115,7 @@ const LayoutHeader = (props: ChildrenProps) => {
         />
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }}>
+        <Header className="site-layout-background" style={{display:'flex', justifyContent: 'space-between', alignItems:'center', color: "#ffff"}}>
           {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
             className: 'trigger',
             onClick: () => setCollapsed(!collapsed),
