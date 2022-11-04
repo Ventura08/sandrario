@@ -2,6 +2,116 @@
 import '../../styles/base.css'
 import '../../styles/cabecalho.css'
 import Logo from '../../assets/logo.png'
+import Inicio from '../../assets/inicio.png'
+import Agendamento from '../../assets/agendamento.png'
+import Cadastro from '../../assets/cadastro.png'
+import Equipe from '../../assets/equipe.png'
+import MenuIcon from '../../assets/menu.png'
+import CloseIcon from '../../assets/close.png'
+
+import {
+  MenuOutlined,
+  CloseOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+import React, { ReactElement, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+const { Header, Sider, Content } = Layout;
+
+type ChildrenProps = {
+  children?: ReactElement | React.ReactNode;
+};
+
+const LayoutHeader = (props: ChildrenProps) => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  return (
+    <Layout style={{ height: '100vh' }} >
+      <Sider trigger={null} collapsible collapsed={collapsed} >
+        <div className="logo">
+          <img src={Logo} />
+        </div>
+        <Menu
+          //theme="dark"
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          items={[
+            {
+              key: '1',
+              icon: (
+                <Link to="/">
+                  <div className="icon-style">
+                    <img src={Inicio} />
+                  </div>
+                </Link>
+              ),
+              label: 'Home',
+            },
+            {
+              key: '2',
+              icon: (
+                <Link to="/cadastro">
+                  <div className="icon-style">
+                    <img src={Cadastro} />
+                  </div>
+                </Link>
+              ),
+              label: 'Cadastro',
+            },
+            {
+              key: '3',
+              icon: (
+                <Link to="/agendamento">
+                  <div className="icon-style">
+                    <img src={Agendamento} />
+                  </div>
+                </Link>
+              ),
+              label: 'Agendamento',
+            },
+            {
+              key: '4',
+              icon: (
+                <Link to="/equipe">
+                  <div className="icon-style">
+                    <img src={Equipe} />
+                  </div>
+                </Link>
+              ),
+              label: 'Equipe',
+            },
+          ]}
+        />
+      </Sider>
+      <Layout className="site-layout">
+        <Header className="site-layout-background" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: "#ffff" }}>
+          {React.createElement(collapsed ? CloseOutlined : MenuOutlined, {
+            className: 'trigger',
+            onClick: () => setCollapsed(!collapsed),
+          })}
+        </Header>
+        <Content
+          className="site-layout-background"
+          style={{
+            margin: "0px",
+            padding: 0,
+            height: "auto",
+          }}
+        >
+          {props.children}
+        </Content>
+      </Layout>
+    </Layout>
+  );
+};
+
+export default LayoutHeader;
+
+
 
 // interface Props {
 //     children: ReactElement
@@ -29,7 +139,7 @@ import Logo from '../../assets/logo.png'
 //         />
 //         <p className="cabecalho__pag">Página de Início</p>
 //       </header>
-      
+
 //       <nav className="menu-lateral">
 //         <img
 //           src="logo.png"
@@ -55,115 +165,13 @@ import Logo from '../../assets/logo.png'
 //           Equipe
 //         </a>
 //       </nav>
-      
+
 //       <main className="principal">
 //         {props.children}
 //       </main>
-          
+
 //     </div>
 //   );
 // };
 
 // export default Layout;
-
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
-import React, { ReactElement, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-const { Header, Sider, Content } = Layout;
-
-type ChildrenProps = {
-  children?: ReactElement | React.ReactNode;
-};
-
-const LayoutHeader = (props: ChildrenProps) => {
-  const [collapsed, setCollapsed] = useState(false);
-
-  return (
-    <Layout style={{height: '100vh'}}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo">
-          <img src={Logo} />
-        </div>
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: (
-                <Link to="/">
-                  <div className="icon-style">
-                    <UserOutlined />
-                  </div>
-                </Link>
-              ),
-              label: 'Home',
-            },
-            {
-              key: '2',
-              icon: (
-                <Link to="/cadastro">
-                  <div className="icon-style">
-                    <UserOutlined />
-                  </div>
-                </Link>
-              ),
-              label: 'Cadastro',
-            },
-            {
-              key: '3',
-              icon: (
-                <Link to="/agendamento">
-                  <div className="icon-style">
-                    <UserOutlined />
-                  </div>
-                </Link>
-              ),
-              label: 'Agendamento',
-            },
-            {
-              key: '4',
-              icon: (
-                <Link to="/equipe">
-                  <div className="icon-style">
-                    <UserOutlined />
-                  </div>
-                </Link>
-              ),
-              label: 'Equipe',
-            },
-          ]}
-        />
-      </Sider>
-      <Layout className="site-layout">
-        <Header className="site-layout-background" style={{display:'flex', justifyContent: 'space-between', alignItems:'center', color: "#ffff"}}>
-          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-            className: 'trigger',
-            onClick: () => setCollapsed(!collapsed),
-          })}
-        </Header>
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: "0px",
-            padding: 0,
-            height: "auto",
-          }}
-        >
-           {props.children}
-        </Content>
-      </Layout>
-    </Layout>
-  );
-};
-
-export default LayoutHeader;
