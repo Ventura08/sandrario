@@ -30,12 +30,13 @@ const LayoutHeader = (props: ChildrenProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Layout style={{ height: '100vh' }} >
+    <Layout style={{ height: '100% ', position: "relative"}} >
       <Sider trigger={null} collapsible collapsed={collapsed} >
         <div className="logo">
           <img src={Logo} />
         </div>
         <Menu
+          h-full
           //theme="dark"
           mode="inline"
           defaultSelectedKeys={['1']}
