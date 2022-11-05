@@ -1,5 +1,5 @@
 import Blog from '../../component/homeBlog/Blog'
-import Rodinha from '../../component/homeBlog/rodinha'
+import Rodinha from '../../component/homeBlog/Rodinha';
 
 function Home () {
  return (
