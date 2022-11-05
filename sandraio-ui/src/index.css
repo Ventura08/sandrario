@@ -18,3 +18,8 @@ body {
     width: 16px !important;
     height: 16px !important;
 }
+
+.ant-btn:hover, .ant-btn:focus, .ant-btn:active {
+    text-decoration: none;
+    background: #4A357D;
+}
