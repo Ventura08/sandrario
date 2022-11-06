@@ -31,8 +31,6 @@ const Cadastro = (): ReactElement => {
               <div className="flex w-full h-full ">
                 <FormAluno teste={teste} />
                 <img className="w-96 h-full mr-8 mb-8 object-cover" src={student_image} alt="" />
-                {/* <CustomButton onClick={() => setTeste(!teste)} /> */}
-                {/* <button className="bg-logoDarkPurple w-36 h-8 p-2 self-end m-7 text-center leading-4 text-gray-50 rounded-lg" onClick={() => setTeste(!teste)}>Salvar</button> */}
               </div>
             </BaseContainer>
           </div>
@@ -42,9 +40,7 @@ const Cadastro = (): ReactElement => {
             <BaseContainer className="flex w-11/12 bg-gray-100 rounded-xl">
               <div className="flex w-full h-full ">
                 <FormProfessor teste={teste} />
-                <img className="w-96 h-full mr-8 mb-8 object-cover" src={student_image} alt="" />
-                {/* <CustomButton onClick={() => setTeste(!teste)} /> */}
-                {/* <button className="bg-logoDarkPurple w-36 h-8 p-2 self-end m-7 text-center leading-4 text-gray-50 rounded-lg" onClick={() => setTeste(!teste)}>Salvar</button> */}
+                <img className="w-96 h-full mr-8 mb-8 object-cover" src={professor_image} alt="" />
               </div>
             </BaseContainer>
           </div>
@@ -54,9 +50,7 @@ const Cadastro = (): ReactElement => {
           <BaseContainer className="flex w-11/12 bg-gray-100 rounded-xl">
               <div className="flex w-full h-full ">
                 <FormDisciplina teste={teste} />
-                <img className="w-96 h-full mr-8 mb-8 object-cover" src={student_image} alt="" />
-                {/* <CustomButton onClick={() => setTeste(!teste)} /> */}
-                {/* <button className="bg-logoDarkPurple w-36 h-8 p-2 self-end m-7 text-center leading-4 text-gray-50 rounded-lg" onClick={() => setTeste(!teste)}>Salvar</button> */}
+                <img className="w-96 h-full mr-8 mb-8 object-cover" src={subject_image} alt="" />
               </div>
             </BaseContainer>
           </div>
