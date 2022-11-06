@@ -4,6 +4,10 @@ import { Button, DatePicker, Form, Input, Modal, Select } from "antd";
 import { Link } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { RequiredMark } from "antd/lib/form/Form";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
 
 export default function Agenda() {
   const [form] = Form.useForm();
@@ -11,6 +15,8 @@ export default function Agenda() {
 
   const [requiredMark, setRequiredMarkType] =
     useState<RequiredMark>("optional");
+
+  const localizer = momentLocalizer(moment);
 
   const onRequiredTypeChange = ({
     requiredMarkValue,
@@ -60,7 +66,21 @@ export default function Agenda() {
           </span>
         </Button>
       </div>
-
+      <Calendar
+          localizer={localizer}
+          defaultDate={new Date()}
+          defaultView="month"
+          events={[
+            {
+              start: moment().toDate(),
+              end: moment()
+                .add(1, "days")
+                .toDate(),
+              title: "Some title"
+            }
+          ]}
+          style={{ height: 500}}
+        />
       <Modal
         title="Agendamento de aulas"
         open={isModalOpen}
@@ -76,7 +96,7 @@ export default function Agenda() {
           requiredMark={requiredMark}
         >
           <Form.Item label="Professor" required>
-          <Select
+            <Select
               showSearch
               size="large"
               placeholder="Selecione um Professor"
@@ -105,7 +125,7 @@ export default function Agenda() {
             />
           </Form.Item>
           <Form.Item label="Matéria" required>
-          <Select
+            <Select
               showSearch
               size="large"
               placeholder="Selecione uma Matéria"
@@ -134,7 +154,7 @@ export default function Agenda() {
             />
           </Form.Item>
           <Form.Item label="Data" required>
-          <DatePicker className="w-full" size="large"  placeholder="Informe uma Data" />
+            <DatePicker className="w-full" size="large" placeholder="Informe uma Data" />
           </Form.Item>
         </Form>
       </Modal>
