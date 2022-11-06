@@ -1,10 +1,11 @@
 import react, { ReactElement, useState } from "react";
 import { DatePicker, Form, Input, Select } from "antd";
 import { RequiredMark } from "antd/lib/form/Form";
-
+import CustomButton from "../Button/Button";
 
 interface FormProfessorProps {
   className?: string;
+  teste?: boolean;
 }
 
 const FormProfessor = (props: FormProfessorProps): ReactElement => {
@@ -21,9 +22,9 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
   };
 
   return (
-    <div className="w-full h-full d flex justify-center">
+    <div className="w-full h-full flex flex-col">
       <Form
-        className={"w-5/6 p-7"}
+        className={"w-full p-7"}
         form={form}
         layout="vertical"
         initialValues={{ requiredMarkValue: requiredMark }}
@@ -31,14 +32,14 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
         requiredMark={requiredMark}
       >
         <Form.Item label="Nome" required>
-          <Input
-            size="large"
-            className="h-max"
-            placeholder="Ex: Wladmir"
-          />
+          <Input size="large" className="h-max" placeholder="Ex: Wladmir" />
         </Form.Item>
         <Form.Item label="Data" required>
-            <DatePicker className="w-full" size="large"  placeholder="Informe uma Data" />
+          <DatePicker
+            className="w-full"
+            size="large"
+            placeholder="Informe uma Data"
+          />
         </Form.Item>
         <Form.Item label="Matéria" required>
           <Select
@@ -68,6 +69,9 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
           />
         </Form.Item>
       </Form>
+      <div className="self-end">
+        <CustomButton className={``} onClick={() => console.log('NESSE CLICK A GENTE DA O SUBMIT DO ALUNO')}/>
+      </div>
     </div>
   );
 };
