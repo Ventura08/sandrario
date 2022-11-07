@@ -70,6 +70,7 @@ export default function Agenda() {
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
+          views={{month: true, week: true}}
           events={[
             {
               start: moment().toDate(),
@@ -149,6 +150,35 @@ export default function Agenda() {
                 {
                   value: "3",
                   label: "Química",
+                },
+              ]}
+            />
+          </Form.Item>
+          <Form.Item label="Turma" required>
+            <Select
+              showSearch
+              size="large"
+              placeholder="Selecione uma Turma"
+              optionFilterProp="children"
+              onChange={(e) => console.log(e.target.value)}
+              onSearch={(e) => console.log(e)}
+              filterOption={(input, option) =>
+                (option?.label ?? "")
+                  .toLowerCase()
+                  .includes(input.toLowerCase())
+              }
+              options={[
+                {
+                  value: "1",
+                  label: "Mobile",
+                },
+                {
+                  value: "2",
+                  label: "Redes",
+                },
+                {
+                  value: "3",
+                  label: "ADS",
                 },
               ]}
             />
