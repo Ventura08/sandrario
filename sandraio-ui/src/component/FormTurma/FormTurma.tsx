@@ -1,15 +1,15 @@
 import react, { ReactElement, useState } from "react";
 import { Form, Input, Select } from "antd";
 import { RequiredMark } from "antd/lib/form/Form";
-import "./formAluno.css";
+import "./formTurma.css";
 import CustomButton from "../Button/Button";
 
-interface FormAlunoProps {
+interface FormTurmaProps {
   className?: string;
   teste?: boolean;
 }
 
-const FormAluno = (props: FormAlunoProps): ReactElement => {
+const FormTurma = (props: FormTurmaProps): ReactElement => {
 
 
 
@@ -36,25 +36,18 @@ const FormAluno = (props: FormAlunoProps): ReactElement => {
         onValuesChange={onRequiredTypeChange}
         requiredMark={requiredMark}
       >
-        <Form.Item label="Matricula" required>
-          <Input
-            size="large"
-            className="h-max"
-            placeholder="Ex: 12000604"
-          />
-        </Form.Item>
         <Form.Item label="Nome" required>
           <Input
             size="large"
             className="h-max"
-            placeholder="Ex: Sandra Alvez"
+            placeholder="Ex: Mobile"
           />
         </Form.Item>
-        <Form.Item label="Turma" required>
+        <Form.Item label="Numero de Horarios" required>
           <Select
             showSearch
             size="large"
-            placeholder="Selecione uma Turma"
+            placeholder="Selecione a quantidade de horários"
             optionFilterProp="children"
             onChange={(e) => console.log(e.target.value)}
             onSearch={(e) => console.log(e)}
@@ -64,15 +57,23 @@ const FormAluno = (props: FormAlunoProps): ReactElement => {
             options={[
               {
                 value: "1",
-                label: "3B1",
+                label: "1",
               },
               {
                 value: "2",
-                label: "3A1",
+                label: "2",
               },
               {
                 value: "3",
-                label: "3C1",
+                label: "3",
+              },
+              {
+                value: "4",
+                label: "4",
+              },
+              {
+                value: "5",
+                label: "5",
               },
             ]}
           />
@@ -85,4 +86,4 @@ const FormAluno = (props: FormAlunoProps): ReactElement => {
   );
 };
 
-export default FormAluno;
+export default FormTurma;

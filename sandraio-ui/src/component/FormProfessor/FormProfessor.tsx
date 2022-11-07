@@ -34,40 +34,6 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
         <Form.Item label="Nome" required>
           <Input size="large" className="h-max" placeholder="Ex: Wladmir" />
         </Form.Item>
-        <Form.Item label="Data" required>
-          <DatePicker
-            className="w-full"
-            size="large"
-            placeholder="Informe uma Data"
-          />
-        </Form.Item>
-        <Form.Item label="Matéria" required>
-          <Select
-            showSearch
-            size="large"
-            placeholder="Selecione uma Matéria"
-            optionFilterProp="children"
-            onChange={(e) => console.log(e.target.value)}
-            onSearch={(e) => console.log(e)}
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
-            options={[
-              {
-                value: "1",
-                label: "Matemática",
-              },
-              {
-                value: "2",
-                label: "Geografia",
-              },
-              {
-                value: "3",
-                label: "Química",
-              },
-            ]}
-          />
-        </Form.Item>
       </Form>
       <div className="self-end">
         <CustomButton className={``} onClick={() => console.log('NESSE CLICK A GENTE DA O SUBMIT DO ALUNO')}/>
