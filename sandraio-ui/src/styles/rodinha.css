@@ -1,0 +1,140 @@
+.orbit {
+    background: var(--laranja);
+    /*float: left;
+    width: 100%;
+    min-width: 100vw;
+    min-height: 100vh;*/
+}
+
+.orbit-icon {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    text-align: center;
+    display: block;
+}
+
+.orbit-wrap {
+    /*height: 40em;
+    list-style: none;*/
+    font-size: 1.3em;
+}
+
+.orbit-wrap>li {
+    position: absolute;
+    left: 37em;
+    top: 23em;
+    transform: translate(-50%, -50%);
+}
+
+.ring-0>*:nth-of-type(1) {
+    transform: rotate(0) translate(9em) rotate(0);
+}
+
+.ring-0>*:nth-of-type(2) {
+    transform: rotate(100deg) translate(10em) rotate(-100deg);
+}
+
+.ring-0>*:nth-of-type(3) {
+    transform: rotate(170deg) translate(16em) rotate(-170deg);
+}
+
+.ring-0>*:nth-of-type(4) {
+    transform: rotate(230deg) translate(19em) rotate(-230deg);
+}
+
+.ring-0>*:nth-of-type(5) {
+    transform: rotate(285deg) translate(15em) rotate(-285deg);
+}
+
+ul[class^=ring] {
+    transition: all 300ms ease-in-out;
+}
+
+ul[class^=ring] li {
+    transition: all 300ms ease-in-out;
+}
+
+.ring-0 {
+    width: 25em;
+    height: 25em;
+    animation: clockwiseRotate 35s linear infinite;
+}
+
+.ring-0 i {
+    animation: counterClockwiseRotate 35s linear infinite;
+}
+
+.ring-1 {
+    width: 23em;
+    height: 23em;
+    animation: clockwiseRotate 30s linear infinite;
+}
+
+.ring-2 {
+    width: 21em;
+    height: 21em;
+    animation: clockwiseRotate 25s linear infinite;
+}
+
+ul[class^=ring] {
+    border: solid 1px #ffe1bf;
+    position: relative;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+    box-sizing: content-box;
+}
+
+ul[class^=ring] li {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.6em;
+    height: 1.6em;
+    margin: -0.8em;
+}
+
+/* center */
+.orbit-center {
+    z-index: 5;
+    width: 250px;
+    height: 250px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.orbit-center__icon {
+    transform: rotateZ(-360deg);
+    transition: all 300ms ease-in-out;
+}
+
+.orbit-center__icon img {
+    max-width: 100%;
+}
+
+/* animations */
+@keyframes clockwiseRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counterClockwiseRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}

@@ -154,6 +154,11 @@
     background-color: var(--cinza-medio-escuro) !important;
     border-right: none;
     color: var(--cinza-claro);
+    height: 115%;
+}
+
+.ant-layout {
+    height: 145.5%;
 }
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {

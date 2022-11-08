@@ -1,27 +1,36 @@
-import Blog from '../../component/homeBlog/Blog'
+import Blog1 from '../../component/homeBlog/Blog1'
+import Blog2 from '../../component/homeBlog/Blog2'
+import Blog3 from '../../component/homeBlog/Blog3'
 import Rodinha from '../../component/homeBlog/Rodinha';
 
-function Home () {
- return (
-    <div>
-      <div className="p-7">
-         <div className="bg-gray-400 w-full h-96">
-            <Rodinha/>
-         </div>
-         <div className="w-full mt-5 flex justify-between">
-            <div className="bg-gray-600 w-1/3 h-auto p-5">
-               <Blog/>
+
+function Home() {
+   return (
+      <div>
+         <div className="home">
+
+            <div className="home__box">
+               <div className="home__box--rodinha">
+                  <Rodinha />
+               </div>
+
+               <div className="home__box--blog blog1">
+                  <Blog1 />
+               </div>
             </div>
-            <div className="bg-red-600 w-1/3 h-auto mr-7 ml-7 p-5">
-               <Blog/>
+
+            <div className="home__box">
+               <div className="home__box--blog blog2">
+                  <Blog2 />
+               </div>
+               <div className="home__box--blog blog3">
+                  <Blog3 />
+               </div>
             </div>
-            <div className="bg-yellow-600 w-1/3 h-auto p-5">
-               <Blog/>
-            </div>
+
          </div>
       </div>
-    </div>
- )
+   )
 }
 
 export default Home;
