@@ -154,6 +154,11 @@
     background-color: var(--cinza-medio-escuro) !important;
     border-right: none;
     color: var(--cinza-claro);
+    height: 115%;
+}
+
+.ant-layout {
+    height: 145.5%;
 }
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
@@ -177,7 +182,7 @@
 }
 
 .ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover {
-    color: var(--roxo-medio);
+    color: var(--roxo-medio) !important;
 }
 
 .ant-layout-sider {
