@@ -103,7 +103,9 @@ const LayoutHeader = (props: ChildrenProps) => {
             height: "auto",
           }}
         >
+          <div className='w-full h-auto flex justify-center'>
           {props.children}
+          </div>
         </Content>
       </Layout>
     </Layout>
