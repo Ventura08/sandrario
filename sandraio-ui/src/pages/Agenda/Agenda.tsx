@@ -78,6 +78,11 @@ export default function Agenda() {
                 .add(1, "days")
                 .toDate(),
               title: "Some title"
+            },
+            {
+              start: new Date(),
+              end:  new Date("2022 11 25"),
+              title: "jaooo title"
             }
           ]}
           style={{ height: 500}}

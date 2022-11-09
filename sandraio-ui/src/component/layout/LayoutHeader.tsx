@@ -1,6 +1,5 @@
 // import React, { Children, ReactElement } from "react";
 import '../../styles/base.css'
-import '../../styles/cabecalho.css'
 import Logo from '../../assets/logo.png'
 import Inicio from '../../assets/inicio.png'
 import Agendamento from '../../assets/agendamento.png'
@@ -15,10 +14,15 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  DashboardOutlined,
+  PlusCircleOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
-import React, { ReactElement, useState } from 'react';
+import React, { CSSProperties, ReactElement, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from "react-responsive";
 
 const { Header, Sider, Content } = Layout;
 
@@ -26,17 +30,51 @@ type ChildrenProps = {
   children?: ReactElement | React.ReactNode;
 };
 
+
 const LayoutHeader = (props: ChildrenProps) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [collapsedWidth, setCollapsedWidth] = useState<number>();
+  const [sideNavStyle, setSideNavStyle] = useState<CSSProperties>();
+
+  const isNormalScreen = useMediaQuery({ minWidth: 1100 });
+  const isSmallScreen = useMediaQuery({ minWidth: 691 });
+  const isMobile = useMediaQuery({ minWidth: 690 });
+
+  const customNavStyle: CSSProperties = {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    zIndex: "10",
+    height: "100vh",
+  };
+
+  const handleCollaps = () => {
+    if (!isNormalScreen) {
+      return isSmallScreen
+        ? (setCollapsedWidth(80), setCollapsed(true), setSideNavStyle({}))
+        : isMobile &&
+            (setCollapsedWidth(0),
+            setCollapsed(true),
+            setSideNavStyle(customNavStyle));
+    } else {
+      setCollapsed(false);
+      setSideNavStyle({});
+    }
+  };
+
+  useEffect(() => {
+    handleCollaps();
+  }, [isNormalScreen, isSmallScreen, isMobile]);
 
   return (
-    <Layout style={{ height: '100vh', position: "relative"}} >
+    <Layout className='h-full' >
       <Sider trigger={null} collapsible collapsed={collapsed} >
         <div className="logo">
           <img src={Logo} />
         </div>
         <Menu
           mode="inline"
+          className='h-full'
           defaultSelectedKeys={['1']}
           items={[
             {
@@ -112,67 +150,3 @@ const LayoutHeader = (props: ChildrenProps) => {
 
 export default LayoutHeader;
 
-
-
-// interface Props {
-//     children: ReactElement
-// }
-
-// const Layout = (props: Props): ReactElement => {
-
-// const botaoMenu = document.querySelector('.cabecalho__menu')
-// const menu = document.querySelector('.menu-lateral')
-
-// botaoMenu?.addEventListener('click', () => {
-//     menu?.classList.toggle('menu-lateral--ativo')
-// })
-
-//   return (
-//     <div style={{width: '100%'}}>
-//       <header className="cabecalho">
-//         <button className="cabecalho__menu" aria-label="Menu">
-//           <img src="menu.png" alt="Ícone do Menu" />
-//         </button>
-//         <img
-//           src="logo.png"
-//           alt="Logo do Sandrário"
-//           className="cabecalho__logo"
-//         />
-//         <p className="cabecalho__pag">Página de Início</p>
-//       </header>
-
-//       <nav className="menu-lateral">
-//         <img
-//           src="logo.png"
-//           alt="Logo do Sandrário"
-//           className="menu-lateral__logo"
-//         />
-//         <a
-//           href="#"
-//           className="menu-lateral__link menu-lateral__link--inicio menu-lateral__link--ativo"
-//         >
-//           Início
-//         </a>
-//         <a href="#" className="menu-lateral__link menu-lateral__link--cadastro">
-//           Cadastro
-//         </a>
-//         <a
-//           href="#"
-//           className="menu-lateral__link menu-lateral__link--agendamento"
-//         >
-//           Agendamento
-//         </a>
-//         <a href="#" className="menu-lateral__link menu-lateral__link--equipe">
-//           Equipe
-//         </a>
-//       </nav>
-
-//       <main className="principal">
-//         {props.children}
-//       </main>
-
-//     </div>
-//   );
-// };
-
-// export default Layout;

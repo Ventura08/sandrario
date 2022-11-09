@@ -8,18 +8,46 @@ import 'antd/dist/antd.css';
 import Agenda from './pages/Agenda/Agenda';
 import Equipe from './pages/Equipe/Equipe';
 import Home from './pages/Home/Home';
+import './styles/base.css';
 
 function App() {
   return (
     <BrowserRouter>
-    <LayoutHeader>
+   
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/agendamento" element={<Agenda />} />
-          <Route path="/equipe" element={<Equipe />} />
+        <Route
+            path="/"
+            element={
+              <LayoutHeader>
+                <Home />
+              </LayoutHeader>
+            }
+          />
+           <Route
+            path="/cadastro"
+            element={
+              <LayoutHeader>
+                <Cadastro />
+              </LayoutHeader>
+            }
+          />
+           <Route
+            path="/agendamento"
+            element={
+              <LayoutHeader>
+                <Agenda />
+              </LayoutHeader>
+            }
+          />
+           <Route
+            path="/equipe"
+            element={
+              <LayoutHeader>
+                <Equipe />
+              </LayoutHeader>
+            }
+          />
         </Routes>
-    </LayoutHeader>
     </BrowserRouter>
   )
 }
