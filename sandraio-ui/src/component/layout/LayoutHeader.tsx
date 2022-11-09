@@ -41,7 +41,7 @@ const LayoutHeader = (props: ChildrenProps) => {
   const isMobile = useMediaQuery({ minWidth: 690 });
 
   const customNavStyle: CSSProperties = {
-    position: "absolute",
+    // position: "absolute",
     top: "0",
     left: "0",
     zIndex: "10",
@@ -68,13 +68,12 @@ const LayoutHeader = (props: ChildrenProps) => {
 
   return (
     <Layout className='h-full' >
-      <Sider trigger={null} collapsible collapsed={collapsed} >
+      <Sider trigger={null} collapsible style={{height: '100%'}} collapsed={collapsed} >
         <div className="logo">
           <img src={Logo} />
         </div>
         <Menu
           mode="inline"
-          className='h-full'
           defaultSelectedKeys={['1']}
           items={[
             {
@@ -136,7 +135,7 @@ const LayoutHeader = (props: ChildrenProps) => {
           style={{
             margin: "0px",
             padding: 0,
-            height: "auto",
+            height: "100vh",
           }}
         >
           <div className='w-full h-auto flex justify-center'>
