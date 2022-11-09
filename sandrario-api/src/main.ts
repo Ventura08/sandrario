@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import ProfessorRoutes from './routes/ProfessorRoutes';
 
 dotenv.config();
 
@@ -15,5 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 app.use(express.json())
 
+ProfessorRoutes(app)
 
 app.listen(PORT, () => console.log(`Running on ${PORT} ⚡`));
