@@ -1,5 +1,6 @@
 .orbit {
-    background: var(--laranja);
+    font-family: var(--fonte-corpo);
+    color: var(--branco)
     /*float: left;
     width: 100%;
     min-width: 100vw;
@@ -7,13 +8,15 @@
 }
 
 .orbit-icon {
-    width: 170px;
-    height: 170px;
+    padding: 20px;
+    width: 150px;
+    font-size: 0.9em;
+    height: 150px;
     border-radius: 50%;
-    background: white;
-    color: black;
-    text-align: center;
-    display: block;
+    background: var(--roxo-escuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .orbit-wrap {
@@ -34,19 +37,15 @@
 }
 
 .ring-0>*:nth-of-type(2) {
-    transform: rotate(100deg) translate(10em) rotate(-100deg);
+    transform: rotate(130deg) translate(12em) rotate(-130deg);
 }
 
 .ring-0>*:nth-of-type(3) {
-    transform: rotate(170deg) translate(16em) rotate(-170deg);
+    transform: rotate(210deg) translate(18em) rotate(-210deg);
 }
 
 .ring-0>*:nth-of-type(4) {
-    transform: rotate(230deg) translate(19em) rotate(-230deg);
-}
-
-.ring-0>*:nth-of-type(5) {
-    transform: rotate(285deg) translate(15em) rotate(-285deg);
+    transform: rotate(280deg) translate(15em) rotate(-280deg);
 }
 
 ul[class^=ring] {
@@ -63,7 +62,7 @@ ul[class^=ring] li {
     animation: clockwiseRotate 35s linear infinite;
 }
 
-.ring-0 i {
+.ring-0 p {
     animation: counterClockwiseRotate 35s linear infinite;
 }
 
@@ -80,12 +79,13 @@ ul[class^=ring] li {
 }
 
 ul[class^=ring] {
-    border: solid 1px #ffe1bf;
+    border: solid 1px var(--roxo-claro);
     position: relative;
     padding: 0;
     border-radius: 50%;
     list-style: none;
     box-sizing: content-box;
+    box-shadow: none;
 }
 
 ul[class^=ring] li {
@@ -101,15 +101,30 @@ ul[class^=ring] li {
 /* center */
 .orbit-center {
     z-index: 5;
-    width: 250px;
-    height: 250px;
-    background: white;
+    width: 210px;
+    height: 210px;
+    background: var(--roxo-escuro);
     border-radius: 50%;
     display: flex;
     align-items: center;
 }
 
+.orbit-center:hover .orbit-center__icon {
+    transform: rotateZ(0deg);
+  }
+
+  .orbit-wrap > li.orbit-center:hover ~ li > ul {
+    width: 0;
+    height: 0;
+    
+  }
+  .orbit-wrap > li.orbit-center:hover ~ li > ul * {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
 .orbit-center__icon {
+    padding: 30px;
     transform: rotateZ(-360deg);
     transition: all 300ms ease-in-out;
 }
@@ -136,5 +151,15 @@ ul[class^=ring] li {
 
     100% {
         transform: rotate(-360deg);
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .orbit-wrap>li {
+        left: 30em;
+    }
+
+    .rodinha {
+        width: 715px;
     }
 }

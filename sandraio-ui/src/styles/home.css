@@ -6,7 +6,7 @@
 .home__box {
     display: flex;
     color: #FFFFFF;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-bottom: 50px;
 }
 
@@ -98,6 +98,6 @@ img.cartao__imagem {
     border-radius: 0 0 16px 16px;
 }
 
-@media screen and (min-width: 1440px) {
-
+.blog1 .cartao {
+    width: 450px;
 }
