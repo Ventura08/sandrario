@@ -89,8 +89,17 @@
     font-size: 0.9rem;
 }
 
+.cartao__botao:hover {
+    background-color: var(--roxo-claro);
+    color: var(--branco);
+}
+
 .cartao__botao img {
     width: 23px;
+}
+
+.cartao__info img {
+    margin: 0 10px;
 }
 
 img.cartao__imagem {

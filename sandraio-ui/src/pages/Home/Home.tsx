@@ -28,6 +28,7 @@ function Home() {
                </div>
             </div>
 
+            <h1 className="copy">© Copyright 2022 | Sandrário - Todos os direitos reservados</h1>
          </div>
       </div>
    )
