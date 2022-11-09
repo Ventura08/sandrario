@@ -1,33 +1,37 @@
 export default function Equipe() {
     return (
-       <div>    
-           <div>
-            <div className="">
-                <div>
-                    <div className="bg-black w-32 h-32">
-                    <h1>Nome</h1>
+        <div>
+            <div className="equipe__box--flex">
+
+                <div className="equipe--box">
+                    <img className="equipe--box-img" src="" alt="Imagem do integrante" />
+                    <h1>Nome 01</h1>
                     <p>Description</p>
                 </div>
-                <div>
-                    <img src="" alt="" />
-                    <h1>Nome</h1>
+
+                <div className="equipe--box">
+                    <img className="equipe--box-img" src="" alt="Imagem do integrante" />
+                    <h1>Nome 02</h1>
                     <p>Description</p>
                 </div>
+
             </div>
-            <div>
-                <div>
-                    <img src="" alt="" />
-                    <h1>Nome</h1>
+
+            <div className="equipe__box--flex">
+
+                <div className="equipe--box">
+                    <img className="equipe--box-img" src="" alt="Imagem do integrante" />
+                    <h1>Nome 03</h1>
                     <p>Description</p>
                 </div>
-                <div>
-                    <img src="" alt="" />
-                    <h1>Nome</h1>
+
+                <div className="equipe--box">
+                    <img className="equipe--box-img" src="" alt="Imagem do integrante" />
+                    <h1>Nome 04</h1>
                     <p>Description</p>
                 </div>
+
             </div>
-           </div>
-       </div>
-    </div>
+        </div>
     )
 }
