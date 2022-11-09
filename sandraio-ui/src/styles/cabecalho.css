@@ -158,7 +158,6 @@
     background-color: var(--cinza-medio-escuro) !important;
     border-right: none;
     color: var(--cinza-claro);
-    height: 115%;
 }
 
 .ant-layout {

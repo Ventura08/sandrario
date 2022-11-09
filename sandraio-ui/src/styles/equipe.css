@@ -19,6 +19,11 @@
     height: 200px;
     background: black;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+img.img-tevo {
+    margin-top: -50px;
 }
 
 .equipe--box h1 {
@@ -29,6 +34,7 @@
     line-height: 24px;
     text-align: center;
     color: #202020;
+    margin: 15px 0;
 }
 
 .equipe--box p {
