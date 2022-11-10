@@ -4,7 +4,11 @@ import MainModel from "./MainModel";
 class ProfessorModel extends MainModel {
     prisma = super.getInstance()
     async getProfessores(): Promise<Professor[]> {
-        return (await this.prisma).professor.findMany()
+        return (await this.prisma).professor.findMany({
+            include: {
+                disciplina: true
+            }
+        })
     }
 }
 
