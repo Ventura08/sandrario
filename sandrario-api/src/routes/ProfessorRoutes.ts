@@ -8,7 +8,7 @@ const ProfessorRoutes = (app: express.Application) => {
         try {
             return res.json(await controller.getProfessores());
         } catch (error) {
-            res.send(error)
+            return res.send(error)
         }
     })
 }

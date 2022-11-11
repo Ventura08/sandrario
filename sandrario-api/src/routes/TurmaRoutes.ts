@@ -8,7 +8,7 @@ const TurmaRoutes = (app: express.Application) => {
         try {
             return res.json(await controller.getTurmas());
         } catch (error) {
-            res.send(error)
+            return res.send(error)
         }
     })
 
@@ -16,15 +16,15 @@ const TurmaRoutes = (app: express.Application) => {
         try {
             return res.json(await controller.createTurma(req.body));
         } catch (error) {
-            res.send(error)
+            return res.send(error)
         }
     })
 
     app.patch('/turmas/:id', async (req: Request, res: Response) => {
         try {
             return res.json(await controller.updateTurma(Number(req.params.id), req.body));
-        } catch (err) {
-            res.send(err)
+        } catch (error) {
+            return res.send(error)
         }
     })
 
@@ -32,7 +32,7 @@ const TurmaRoutes = (app: express.Application) => {
         try {
             return res.json(await controller.deleteTurma(Number(req.params.id)))
         } catch(error) {
-            res.send(error)
+            return res.send(error)
         }
     })
 }

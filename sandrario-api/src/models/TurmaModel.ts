@@ -18,10 +18,7 @@ class ProfessorModel extends MainModel {
             where: {
                 id: id
             },
-            data: {
-                nome: data.nome,
-                quantidade_horarios: data.quantidade_horarios
-            }
+            data: data
         })
     }
 
