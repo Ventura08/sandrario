@@ -12,6 +12,26 @@ class ProfessorModel extends MainModel {
             data: data
         })
     }
+
+    async updateTurma(id: number, data: Turma): Promise<Turma> {
+        return (await this.prisma).turma.update({
+            where: {
+                id: id
+            },
+            data: {
+                nome: data.nome,
+                quantidade_horarios: data.quantidade_horarios
+            }
+        })
+    }
+
+    async deleteTurma(id: number): Promise<Turma> {
+        return (await this.prisma).turma.delete({
+            where: {
+                id: id
+            }
+        })
+    }
 }
 
 export default ProfessorModel;
