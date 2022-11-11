@@ -19,7 +19,7 @@ model Turma {
 model Disciplina {
   id        Int     @id @default(autoincrement())
   nome      String  @db.VarChar(255)
-  hora_aula Decimal @db.Decimal()
+  hora_aula Decimal @db.Decimal(9,2)
   aulas_totais Int  @db.Int 
   professor Professor?
 }

@@ -11,7 +11,7 @@ CREATE TABLE `Turma` (
 CREATE TABLE `Disciplina` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(255) NOT NULL,
-    `hora_aula` DECIMAL NOT NULL,
+    `hora_aula` DECIMAL(9, 2) NOT NULL,
     `aulas_totais` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
