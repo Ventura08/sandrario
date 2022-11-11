@@ -10,6 +10,14 @@ class TurmaController {
     async createTurma(data: Turma): Promise<Turma> {
         return this.model.createTurma(data)
     }
+
+    async updateTurma(id: number, data: Turma): Promise<Turma> {
+        return this.model.updateTurma(id, data)
+    }
+
+    async deleteTurma(id: number): Promise<Turma> {
+        return this.model.deleteTurma(id)
+    }
 }
 
 export default TurmaController;
