@@ -21,12 +21,12 @@ model Disciplina {
   nome      String  @db.VarChar(255)
   hora_aula Decimal @db.Decimal(9,2)
   aulas_totais Int  @db.Int 
-  professor Professor?
+  professor Professor[]
 }
 
 model Professor {
   id Int @id @default(autoincrement())
   nome String @db.VarChar(255)
   disciplina Disciplina? @relation(fields: [disciplina_id], references: [id])
-  disciplina_id Int? @unique
+  disciplina_id Int 
 }

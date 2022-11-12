@@ -1,16 +1,23 @@
-import { Professor } from "@prisma/client";
-import { errorMessages } from "../utils/strings/errorMessages";
-import ProfessorModel from "../models/ProfessorModel";
+import { Professor } from '@prisma/client'
+import ProfessorModel from '../models/ProfessorModel'
 
 class ProfessorController {
-    model = new ProfessorModel()
-    async getProfessores(): Promise<Professor[] | string> {
-        try {
-        return this.model.getProfessores()
-        } catch (error) {
-            return errorMessages.getEndPointErrorMsg
-        }
-    }
+  model = new ProfessorModel()
+  async getProfessores (): Promise<Professor[]> {
+    return await this.model.getProfessores()
+  }
+
+  async createProfessor (data: Professor): Promise<Professor> {
+    return await this.model.createProfessor(data)
+  }
+
+  async updateProfessor (id: number, data: Professor): Promise<Professor> {
+    return await this.model.updateProfessor(id, data)
+  }
+
+  async deleteProfessor (id: number): Promise<Professor> {
+    return await this.model.deleteProfessor(id)
+  }
 }
 
-export default ProfessorController;
+export default ProfessorController

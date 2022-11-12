@@ -1,35 +1,34 @@
-import { Disciplina } from "@prisma/client";
-import MainModel from "./MainModel";
+import { Disciplina } from '@prisma/client'
+import MainModel from './MainModel'
 
 class ProfessorModel extends MainModel {
-    prisma = super.getInstance()
-    async getDisciplinas(): Promise<Disciplina[]> {
-        return (await this.prisma).disciplina.findMany()
-    }
+  prisma = super.getInstance()
+  async getDisciplinas (): Promise<Disciplina[]> {
+    return await (await this.prisma).disciplina.findMany()
+  }
 
-    async createDisciplina(data: Disciplina): Promise<Disciplina> {
-        return (await this.prisma).disciplina.create({
-            data: data
-        })
-    }
+  async createDisciplina (data: Disciplina): Promise<Disciplina> {
+    return await (await this.prisma).disciplina.create({
+      data
+    })
+  }
 
-    async updateDisciplina(id: number, data: Disciplina): Promise<Disciplina> {
-        return (await this.prisma).disciplina.update({
-            where: {
-                id: id
-            },
-            data: data
-        })
-    }
+  async updateDisciplina (id: number, data: Disciplina): Promise<Disciplina> {
+    return await (await this.prisma).disciplina.update({
+      where: {
+        id
+      },
+      data
+    })
+  }
 
-    async deleteDisciplina(id: number): Promise<Disciplina> {
-        return (await this.prisma).disciplina.delete({
-            where: {
-                id: id
-            }
-        })
-    }
+  async deleteDisciplina (id: number): Promise<Disciplina> {
+    return await (await this.prisma).disciplina.delete({
+      where: {
+        id
+      }
+    })
+  }
 }
 
-export default ProfessorModel;
-
+export default ProfessorModel
