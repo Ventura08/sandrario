@@ -1,8 +1,10 @@
-import react, { ReactElement, useState } from "react";
+import react, { ReactElement, useCallback, useEffect, useState } from "react";
 import { Form, Input, Select } from "antd";
 import { RequiredMark } from "antd/lib/form/Form";
 import "./formTurma.css";
 import CustomButton from "../Button/Button";
+import { getAllTurmas } from "../../services/turmasService";
+import { TurmasInterface } from "../../interfaces/turmaInterface";
 
 interface FormTurmaProps {
   className?: string;
@@ -11,7 +13,7 @@ interface FormTurmaProps {
 
 const FormTurma = (props: FormTurmaProps): ReactElement => {
 
-
+  const [turma, setTurma] = useState<TurmasInterface[]>()
 
   const [form] = Form.useForm();
  
@@ -25,6 +27,21 @@ const FormTurma = (props: FormTurmaProps): ReactElement => {
   }) => {
     setRequiredMarkType(requiredMarkValue);
   };
+
+  const handleTurma = async (value: string) => {
+    console.log(value)
+  }
+
+  const getTurmas = useCallback(async () => {
+    await getAllTurmas().then((res) => {
+      setTurma(res.data)
+    })
+  }, [])
+
+
+  useEffect(() => {
+    getTurmas()
+  }, [getTurmas])
 
   return (
     <div className="w-full h-full flex flex-col">
@@ -44,39 +61,19 @@ const FormTurma = (props: FormTurmaProps): ReactElement => {
           />
         </Form.Item>
         <Form.Item label="Numero de Horarios" required>
-          <Select
-            showSearch
-            size="large"
-            placeholder="Selecione a quantidade de horários"
-            optionFilterProp="children"
-            onChange={(e) => console.log(e.target.value)}
-            onSearch={(e) => console.log(e)}
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
-            options={[
-              {
-                value: "1",
-                label: "1",
-              },
-              {
-                value: "2",
-                label: "2",
-              },
-              {
-                value: "3",
-                label: "3",
-              },
-              {
-                value: "4",
-                label: "4",
-              },
-              {
-                value: "5",
-                label: "5",
-              },
-            ]}
-          />
+        <Select
+              allowClear
+              showSearch
+              placeholder="Selecione a Turma"
+              onChange={handleTurma}
+              style={{ width: '100%' }}
+            >
+              {turma?.map((item) => (
+                <Select.Option key={item.id} value={item.nome}>
+                  {item.quantidade_horarios}
+                </Select.Option>
+              ))}
+          </Select>
         </Form.Item>
       </Form>
       <div className="self-end">

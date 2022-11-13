@@ -1,6 +1,12 @@
 import { Form, Input, Select } from "antd";
 import { RequiredMark } from "antd/lib/form/Form";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useCallback, useState, useEffect } from "react";
+import { DisciplinaInterface } from "../../interfaces/disciplinaInterface";
+import { ProfessorInterface } from "../../interfaces/professorInterface";
+import { TurmasInterface } from "../../interfaces/turmaInterface";
+import { getAllDisciplinas } from "../../services/disciplinaService";
+import { getAllProfessores } from "../../services/professorService";
+import { getAllTurmas } from "../../services/turmasService";
 import CustomButton from "../Button/Button";
 
 interface FormHorarioProps {
@@ -9,8 +15,16 @@ interface FormHorarioProps {
 }
 
 const FormHorario = (props: FormHorarioProps): ReactElement => {
+  const [selectValues, setSelectValues] = useState<{
+    professor: string | undefined;
+    disciplina: string | undefined;
+    turma: string | undefined;
+    subject: string | undefined;
+  }>({ professor: undefined, disciplina: undefined, turma: undefined, subject: undefined })
 
-
+  const [professor, setProfessor] = useState<ProfessorInterface[]>()
+  const [disciplina, setDisciplina] = useState<DisciplinaInterface[]>()
+  const [turma, setTurma] = useState<TurmasInterface[]>()
 
     const [form] = Form.useForm();
    
@@ -24,7 +38,45 @@ const FormHorario = (props: FormHorarioProps): ReactElement => {
     }) => {
       setRequiredMarkType(requiredMarkValue);
     };
+
+    const handleStatus = async (value: string) => {
+      console.log(value)
+    }
+
+    const handleDisciplina = async (value: string) => {
+      console.log(value)
+    }
   
+
+     const handleTurma = async (value: string) => {
+      console.log(value)
+    }
+   
+    const getTurmas = useCallback(async () => {
+      await getAllTurmas().then((res) => {
+        setTurma(res.data)
+      })
+    }, [])
+
+    const getDisciplinas = useCallback(async () => {
+      await getAllDisciplinas().then((res) => {
+        setDisciplina(res.data)
+      })
+    }, [])
+  
+
+    const getProfessores = useCallback(async () => {
+      await getAllProfessores().then((res) => {
+        setProfessor(res.data)
+      })
+    }, [])
+
+    useEffect(() => {
+      getProfessores()
+      getDisciplinas()
+      getTurmas()
+    }, [getProfessores, getDisciplinas, getTurmas])
+
     return (
       <div className="w-full h-full flex flex-col">
         <Form
@@ -36,109 +88,52 @@ const FormHorario = (props: FormHorarioProps): ReactElement => {
           requiredMark={requiredMark}
         >
           <Form.Item label="Turma" required>
-            <Select
+          <Select
+              allowClear
               showSearch
-              size="large"
               placeholder="Selecione a Turma"
-              optionFilterProp="children"
-              onChange={(e) => console.log(e.target.value)}
-              onSearch={(e) => console.log(e)}
-              filterOption={(input, option) =>
-                (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-              }
-              options={[
-                {
-                  value: "1",
-                  label: "MOBILE",
-                },
-                {
-                  value: "2",
-                  label: "REDES",
-                },
-                {
-                  value: "3",
-                  label: "ADS",
-                },
-                {
-                  value: "ENG.SOFTWARE",
-                  label: "4",
-                },
-                {
-                  value: "5",
-                  label: "ENG.COMPUTAÇÃO",
-                },
-              ]}
-            />
+              value={selectValues?.turma}
+              onChange={handleTurma}
+              style={{ width: '100%' }}
+            >
+              {turma?.map((item) => (
+                <Select.Option key={item.id} value={item.nome}>
+                  {item.nome}
+                </Select.Option>
+              ))}
+          </Select>
           </Form.Item>
           <Form.Item label="Disciplina" required>
-            <Select
+          <Select
+              allowClear
               showSearch
-              size="large"
               placeholder="Selecione a Disciplina"
-              optionFilterProp="children"
-              onChange={(e) => console.log(e.target.value)}
-              onSearch={(e) => console.log(e)}
-              filterOption={(input, option) =>
-                (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-              }
-              options={[
-                {
-                  value: "1",
-                  label: "DevWeb",
-                },
-                {
-                  value: "2",
-                  label: "Framework",
-                },
-                {
-                  value: "3",
-                  label: "Matemática",
-                },
-                {
-                  value: "4",
-                  label: "Geografia",
-                },
-                {
-                  value: "5",
-                  label: "Historia",
-                },
-              ]}
-            />
+              value={selectValues?.disciplina}
+              onChange={handleDisciplina}
+              style={{ width: '100%' }}
+            >
+              {disciplina?.map((item) => (
+                <Select.Option key={item.id} value={item.nome}>
+                  {item.nome}
+                </Select.Option>
+              ))}
+          </Select>
           </Form.Item>
           <Form.Item label="Professor" required>
-            <Select
+          <Select
+              allowClear
               showSearch
-              size="large"
               placeholder="Selecione o Professor"
-              optionFilterProp="children"
-              onChange={(e) => console.log(e.target.value)}
-              onSearch={(e) => console.log(e)}
-              filterOption={(input, option) =>
-                (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-              }
-              options={[
-                {
-                  value: "1",
-                  label: "Sandra",
-                },
-                {
-                  value: "2",
-                  label: "Barbara",
-                },
-                {
-                  value: "3",
-                  label: "Nicolle",
-                },
-                {
-                  value: "4",
-                  label: "Rafa",
-                },
-                {
-                  value: "5",
-                  label: "Gabriel",
-                },
-              ]}
-            />
+              value={selectValues?.professor}
+              onChange={handleStatus}
+              style={{ width: '100%' }}
+            >
+              {professor?.map((item) => (
+                <Select.Option key={item.id} value={item.nome}>
+                  {item.nome}
+                </Select.Option>
+              ))}
+          </Select>
           </Form.Item>
         </Form>
         <div className="self-end">
