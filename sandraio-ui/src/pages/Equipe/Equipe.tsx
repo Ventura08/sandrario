@@ -6,6 +6,7 @@ import Tevo from '../../assets/equipe/tevo.jpeg'
 export default function Equipe() {
     return (
         <div>
+            <h1 className='text-3xl mt-5'>Equipe</h1>
             <div className="equipe__box--flex">
 
                 <div className="equipe--box">
