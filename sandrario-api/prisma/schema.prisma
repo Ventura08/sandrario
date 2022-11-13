@@ -14,6 +14,7 @@ model Turma {
   id                  Int    @id @default(autoincrement())
   nome                String @db.VarChar(255)
   quantidade_horarios Int    @db.Int
+  turma_professor TurmaProfessor[]
 }
 
 model Disciplina {
@@ -27,6 +28,17 @@ model Disciplina {
 model Professor {
   id Int @id @default(autoincrement())
   nome String @db.VarChar(255)
+  turma_professor TurmaProfessor[]
   disciplina Disciplina? @relation(fields: [disciplina_id], references: [id])
   disciplina_id Int 
+}
+
+model TurmaProfessor {
+  id Int @id @default(autoincrement())
+  turma Turma? @relation(fields: [turma_id], references: [id])
+  turma_id Int
+  professor Professor? @relation(fields: [professor_id], references: [id])
+  professor_id Int
+  data_inicio  DateTime @default(now())
+  data_fim DateTime 
 }
