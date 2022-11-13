@@ -57,7 +57,7 @@ const Cadastro = (): ReactElement => {
             </BaseContainer>
           </div>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="Horario" key="4">
+        <Tabs.TabPane tab="Horário" key="4">
           <div className="flex justify-center">
             <BaseContainer className="flex w-11/12 bg-gray-100 rounded-xl">
               <div className="flex w-full h-full ">
