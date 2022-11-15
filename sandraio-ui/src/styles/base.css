@@ -40,3 +40,11 @@ aside{
 .ant-form-item-explain-error{
     text-align: left;
 }
+
+
+.ant-select-show-search.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    cursor: text;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
