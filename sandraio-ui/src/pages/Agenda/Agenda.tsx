@@ -7,11 +7,26 @@ import { RequiredMark } from "antd/lib/form/Form";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import { getAllTurmas } from "../../services/turmasService";
+import { getAllDisciplinas } from "../../services/disciplinaService";
+import { getAllProfessores } from "../../services/professorService";
+import { ProfessorInterface } from "../../interfaces/professorInterface";
+import { DisciplinaInterface } from "../../interfaces/disciplinaInterface";
+import { TurmasInterface } from "../../interfaces/turmaInterface";
 
 
 export default function Agenda() {
+  const [selectValues, setSelectValues] = useState<{
+    professor: string | undefined;
+    disciplina: string | undefined;
+    turma: string | undefined;
+    subject: string | undefined;
+  }>({ professor: undefined, disciplina: undefined, turma: undefined, subject: undefined })
   const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [professor, setProfessor] = useState<ProfessorInterface[]>()
+  const [disciplina, setDisciplina] = useState<DisciplinaInterface[]>()
+  const [turma, setTurma] = useState<TurmasInterface[]>()
 
   const [requiredMark, setRequiredMarkType] =
     useState<RequiredMark>("optional");
@@ -37,6 +52,44 @@ export default function Agenda() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const getTurmas = useCallback(async () => {
+    await getAllTurmas().then((res) => {
+      setTurma(res.data)
+    })
+  }, [])
+
+  const getDisciplinas = useCallback(async () => {
+    await getAllDisciplinas().then((res) => {
+      setDisciplina(res.data)
+    })
+  }, [])
+
+
+  const getProfessores = useCallback(async () => {
+    await getAllProfessores().then((res) => {
+      setProfessor(res.data)
+    })
+  }, [])
+
+  const handleTurma = async (value: string) => {
+    console.log(value)
+  }
+
+  const handleDisciplina = async (value: string) => {
+    console.log(value)
+  }
+  
+  const handleProfessor = async (value: string) => {
+    console.log(value)
+  }
+
+
+  useEffect(() => {
+    getProfessores()
+    getDisciplinas()
+    getTurmas()
+  }, [getProfessores, getDisciplinas, getTurmas])
 
   return (
     <div className="bg-white p-5 m-5 rounded-md flex flex-col w-11/12">
@@ -102,91 +155,52 @@ export default function Agenda() {
           requiredMark={requiredMark}
         >
           <Form.Item label="Professor" required>
-            <Select
+          <Select
+              allowClear
               showSearch
-              size="large"
-              placeholder="Selecione um Professor"
-              optionFilterProp="children"
-              onChange={(e) => console.log(e.target.value)}
-              onSearch={(e) => console.log(e)}
-              filterOption={(input, option) =>
-                (option?.label ?? "")
-                  .toLowerCase()
-                  .includes(input.toLowerCase())
-              }
-              options={[
-                {
-                  value: "1",
-                  label: "Sandra Alves",
-                },
-                {
-                  value: "2",
-                  label: "Luciene Silva",
-                },
-                {
-                  value: "3",
-                  label: "Wladmir",
-                },
-              ]}
-            />
+              placeholder="Selecione o Professor"
+              value={selectValues?.professor}
+              onChange={handleProfessor}
+              style={{ width: '100%' }}
+            >
+              {professor?.map((item) => (
+                <Select.Option key={item.id} value={item.nome}>
+                  {item.nome}
+                </Select.Option>
+              ))}
+          </Select>
           </Form.Item>
           <Form.Item label="Matéria" required>
-            <Select
+          <Select
+              allowClear
               showSearch
-              size="large"
-              placeholder="Selecione uma Matéria"
-              optionFilterProp="children"
-              onChange={(e) => console.log(e.target.value)}
-              onSearch={(e) => console.log(e)}
-              filterOption={(input, option) =>
-                (option?.label ?? "")
-                  .toLowerCase()
-                  .includes(input.toLowerCase())
-              }
-              options={[
-                {
-                  value: "1",
-                  label: "Matemática",
-                },
-                {
-                  value: "2",
-                  label: "Geografia",
-                },
-                {
-                  value: "3",
-                  label: "Química",
-                },
-              ]}
-            />
+              placeholder="Selecione a matéria"
+              value={selectValues?.disciplina}
+              onChange={handleDisciplina}
+              style={{ width: '100%' }}
+            >
+              {disciplina?.map((item) => (
+                <Select.Option key={item.id} value={item.nome}>
+                  {item.nome}
+                </Select.Option>
+              ))}
+          </Select>
           </Form.Item>
           <Form.Item label="Turma" required>
-            <Select
+          <Select
+              allowClear
               showSearch
-              size="large"
-              placeholder="Selecione uma Turma"
-              optionFilterProp="children"
-              onChange={(e) => console.log(e.target.value)}
-              onSearch={(e) => console.log(e)}
-              filterOption={(input, option) =>
-                (option?.label ?? "")
-                  .toLowerCase()
-                  .includes(input.toLowerCase())
-              }
-              options={[
-                {
-                  value: "1",
-                  label: "Mobile",
-                },
-                {
-                  value: "2",
-                  label: "Redes",
-                },
-                {
-                  value: "3",
-                  label: "ADS",
-                },
-              ]}
-            />
+              placeholder="Selecione a turma"
+              value={selectValues?.turma}
+              onChange={handleTurma}
+              style={{ width: '100%' }}
+            >
+              {turma?.map((item) => (
+                <Select.Option key={item.id} value={item.nome}>
+                  {item.nome}
+                </Select.Option>
+              ))}
+          </Select>
           </Form.Item>
           <Form.Item label="Data" required>
             <DatePicker className="w-full" size="large" placeholder="Informe uma Data" />

@@ -1,5 +1,5 @@
 export interface TurmasInterface{
-    id: number,
+    id?: number,
     nome: string,
     quantidade_horarios: number
 }

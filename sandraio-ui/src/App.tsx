@@ -9,11 +9,13 @@ import Agenda from './pages/Agenda/Agenda';
 import Equipe from './pages/Equipe/Equipe';
 import Home from './pages/Home/Home';
 import './styles/base.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <BrowserRouter>
-   
+    <ToastContainer />
         <Routes>
         <Route
             path="/"

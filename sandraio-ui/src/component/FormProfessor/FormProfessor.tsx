@@ -4,6 +4,8 @@ import { RequiredMark } from "antd/lib/form/Form";
 import CustomButton from "../Button/Button";
 import { DisciplinaInterface } from "../../interfaces/disciplinaInterface";
 import { getAllDisciplinas } from "../../services/disciplinaService";
+import { toast } from 'react-toastify';
+import { createProfessores } from "../../services/professorService";
 
 interface FormProfessorProps {
   className?: string;
@@ -13,6 +15,8 @@ interface FormProfessorProps {
 const FormProfessor = (props: FormProfessorProps): ReactElement => {
   const [form] = Form.useForm();
   const [disciplina, setDisciplina] = useState<DisciplinaInterface[]>()
+  const [inputValueName, setInputValueName] = useState<string>("");
+  const [inputValueDisciplina, setInputValueDisciplina] = useState<string>("");
   const [requiredMark, setRequiredMarkType] =
     useState<RequiredMark>("optional");
 
@@ -25,7 +29,7 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
   };
 
   const handleDisciplina = async (value: string) => {
-    console.log(value)
+    setInputValueDisciplina(value)
   }
 
   const getDisciplinas = useCallback(async () => {
@@ -34,7 +38,30 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
     })
   }, [])
 
+  const handleNome = (nome: string) => {
+    setInputValueName(nome);
+  };
 
+  async function sendProfessor() {
+    if(!inputValueName || !inputValueDisciplina) {
+      toast.error("Ops, informe os dados corretamente.", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return
+    }
+    const { status, data } = await createProfessores({
+      nome: inputValueName,
+      disciplina_id: inputValueDisciplina,
+    });
+  
+    toast.success("Parabéns, professor cadastrado!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  
+    if (status !== 200) {
+      throw new Error();
+    }
+   }
 
   useEffect(() => {
     getDisciplinas()
@@ -51,8 +78,9 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
         onValuesChange={onRequiredTypeChange}
         requiredMark={requiredMark}
       >
-        <Form.Item label="Nome" required>
-          <Input size="large" className="h-max" placeholder="Ex: Wladmir" />
+        <Form.Item label="Nome" name='nome'  rules={[{ required: true, message: 'Por favor, informe o nome!' }]}>
+          <Input size="large" className="h-max" placeholder="Ex: Wladmir"
+           onChange={(e) => handleNome(e.target.value)} />
         </Form.Item>
         <Form.Item label="Disciplina" required>
           <Select
@@ -63,16 +91,19 @@ const FormProfessor = (props: FormProfessorProps): ReactElement => {
               style={{ width: '100%' }}
             >
               {disciplina?.map((item) => (
-                <Select.Option key={item.id} value={item.nome}>
+                <Select.Option key={item.id} value={item.id}>
                   {item.nome}
                 </Select.Option>
               ))}
           </Select>
           </Form.Item>
+
+          <div className="flex justify-end">
+        <Form.Item>
+          <CustomButton  onClick={() => sendProfessor()}/>
+        </Form.Item>
+        </div>
       </Form>
-      <div className="self-end">
-        <CustomButton className={``} onClick={() => console.log('NESSE CLICK A GENTE DA O SUBMIT DO ALUNO')}/>
-      </div>
     </div>
   );
 };
