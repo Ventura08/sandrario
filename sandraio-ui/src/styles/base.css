@@ -36,3 +36,7 @@ aside{
 .copy {
     margin: 10px auto;
 }
+
+.ant-form-item-explain-error{
+    text-align: left;
+}

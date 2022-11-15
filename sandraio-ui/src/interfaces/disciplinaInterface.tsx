@@ -1,5 +1,5 @@
 export interface DisciplinaInterface {
-    id: number
+    id?: number
     nome: string
     hora_aula: string
     aulas_totais: number

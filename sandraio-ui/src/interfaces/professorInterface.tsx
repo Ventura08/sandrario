@@ -1,5 +1,5 @@
 export interface ProfessorInterface {
-    id: number
+    id?: number
     nome: string
     disciplina_id: string
     disciplina?: any;
