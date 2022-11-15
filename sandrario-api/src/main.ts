@@ -6,6 +6,7 @@ import cors from 'cors'
 import ProfessorRoutes from './routes/ProfessorRoutes'
 import DisciplinaRoutes from './routes/DisciplinaRoutes'
 import TurmaRoutes from './routes/TurmaRoutes'
+import AgendamentoRoutes from './routes/AgendamentoRoutes'
 
 dotenv.config()
 
@@ -21,5 +22,6 @@ app.use(express.json())
 ProfessorRoutes(app)
 DisciplinaRoutes(app)
 TurmaRoutes(app)
+AgendamentoRoutes(app)
 
 app.listen(PORT, () => console.log(`Running on ${PORT} ⚡`))

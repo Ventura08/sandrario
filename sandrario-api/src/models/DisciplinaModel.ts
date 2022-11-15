@@ -1,7 +1,7 @@
 import { Disciplina } from '@prisma/client'
 import MainModel from './MainModel'
 
-class ProfessorModel extends MainModel {
+class DisciplinaModel extends MainModel {
   prisma = super.getInstance()
   async getDisciplinas (): Promise<Disciplina[]> {
     return await (await this.prisma).disciplina.findMany()
@@ -31,4 +31,4 @@ class ProfessorModel extends MainModel {
   }
 }
 
-export default ProfessorModel
+export default DisciplinaModel
