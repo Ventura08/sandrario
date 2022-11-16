@@ -43,8 +43,8 @@ export default function Agenda() {
   const [inputValueMateria, setInputValueMateria] = useState<string>("");
   const [inputValueTurma, setInputValueTurma] = useState<string>("");
   const [inputValueData, setInputValueData] = useState<string>("");
-  const [agendamentos, setAgendamentos] = useState<any>([]);
-  const [events, setEvents] = useState<any>();
+  const [agendamentos, setAgendamentos] = useState<any>();
+  const [events, setEvents] = useState<any[]>([]);
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
 
   const [requiredMark, setRequiredMarkType] =
@@ -117,23 +117,20 @@ export default function Agenda() {
 
   const getAgendamentos = useCallback(async () => {
     await getAllAgendamentos().then(async (res) => {
-      setAgendamentos(res.data);
-
+    getEvents(res.data);
     });
-    getEvents();
   }, []);
 
-  async function getEvents() {
-    console.log(agendamentos);
-    let i = agendamentos?.map((item: any) => {
+  const getEvents = (agendamentos: any) => {
+    setEvents(agendamentos.map((item: any) => {
       return {
-        start: item.data_inicio,
-        end: item.data_fim,
-        title: `${item.professor.nome} | ${item.professor.disciplina.nome}`,
+        start: moment(item.data_inicio).toDate(),
+        end:  moment(item.data_fim).toDate(),
+        title: `${item.professor.nome} | ${item.professor.disciplina.nome}`
       }
-    });
-    setEvents(i);
+    }))
   }
+  console.log(events)
 
   const handleTurma = async (value: string) => {
     setInputValueTurma(value);
@@ -189,9 +186,8 @@ export default function Agenda() {
       </div>
       <Calendar
         localizer={localizer}
-        defaultDate={new Date()}
-        defaultView="month"
-        views={{ month: true, week: true }}
+        defaultView="work_week"
+        views={{ work_week: true }}
         events={events}
         style={{ height: 500 }}
       />
