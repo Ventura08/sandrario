@@ -12,7 +12,7 @@
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project": "./sandrario/sandrario-api/tsconfig.json"
+        "project": "./sandrario-api/tsconfig.json"
     },
     "plugins": [
         "react"

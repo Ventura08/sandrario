@@ -1,5 +1,6 @@
 import TurmaController from '../controllers/TurmaController'
 import express, { Request, Response } from 'express'
+import { errorMessages } from '../utils/strings/errorMessages'
 
 const TurmaRoutes = (app: express.Application): any => {
   const controller = new TurmaController()
@@ -8,7 +9,7 @@ const TurmaRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.getTurmas())
     } catch (error) {
-      return res.send(error)
+      return res.status(404).send(errorMessages.getEndPointErrorMsg)
     }
   })
 
@@ -16,7 +17,7 @@ const TurmaRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.createTurma(req.body))
     } catch (error) {
-      return res.send(error)
+      return res.status(404).send(errorMessages.postEndPointErrorMsg)
     }
   })
 
@@ -24,7 +25,7 @@ const TurmaRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.updateTurma(Number(req.params.id), req.body))
     } catch (error) {
-      return res.send(error)
+      return res.status(404).send(errorMessages.patchEndPointErrorMsg)
     }
   })
 
@@ -32,7 +33,7 @@ const TurmaRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.deleteTurma(Number(req.params.id)))
     } catch (error) {
-      return res.send(error)
+      return res.status(404).send(errorMessages.deleteEndPointErrorMsg)
     }
   })
 }

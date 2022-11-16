@@ -9,7 +9,7 @@ const AgendamentoRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.getAgendamentos())
     } catch (error) {
-      return res.json(errorMessages.getEndPointErrorMsg)
+      return res.status(404).send(errorMessages.getEndPointErrorMsg)
     }
   })
 
@@ -17,7 +17,7 @@ const AgendamentoRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.createAgendamento(req.body))
     } catch (error) {
-      return res.json(errorMessages.postEndPointErrorMsg)
+      return res.status(404).send(errorMessages.postEndPointErrorMsg)
     }
   })
 }

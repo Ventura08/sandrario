@@ -9,7 +9,7 @@ const ProfessorRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.getProfessores())
     } catch (error) {
-      return res.json(errorMessages.getEndPointErrorMsg)
+      return res.status(404).send(errorMessages.getEndPointErrorMsg)
     }
   })
 
@@ -17,7 +17,7 @@ const ProfessorRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.createProfessor(req.body))
     } catch (error) {
-      return res.json(errorMessages.postEndPointErrorMsg)
+      return res.status(404).send(errorMessages.postEndPointErrorMsg)
     }
   })
 
@@ -25,7 +25,7 @@ const ProfessorRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.updateProfessor(Number(req.params.id), req.body))
     } catch (error) {
-      return res.json(errorMessages.patchEndPointErrorMsg)
+      return res.status(404).send(errorMessages.patchEndPointErrorMsg)
     }
   })
 
@@ -33,7 +33,7 @@ const ProfessorRoutes = (app: express.Application): any => {
     try {
       return res.json(await controller.deleteProfessor(Number(req.params.id)))
     } catch (error) {
-      return res.json(errorMessages.deleteEndPointErrorMsg)
+      return res.status(404).send(errorMessages.deleteEndPointErrorMsg)
     }
   })
 }
