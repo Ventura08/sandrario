@@ -130,10 +130,8 @@ export default function Agenda() {
         start: item.data_inicio,
         end: item.data_fim,
         title: `${item.professor.nome} | ${item.professor.disciplina.nome}`,
-      };
+      }
     });
-
-    console.log(i);
     setEvents(i);
   }
 
@@ -142,8 +140,8 @@ export default function Agenda() {
   };
 
   const handleData = async (value: any) => {
-    let transform = value.toISOString();
-    setInputValueData(transform);
+    let transform = value._d.toISOString();
+    setInputValueData(transform)
   };
 
   const handleDisciplina = async (value: string) => {
@@ -265,7 +263,7 @@ export default function Agenda() {
               format={dateFormatList}
               className="w-full"
               size="large"
-              onChange={(e) => handleData(e?._d)}
+              onChange={(e) => handleData(e)}
               placeholder="Informe uma Data"
             />
           </Form.Item>
