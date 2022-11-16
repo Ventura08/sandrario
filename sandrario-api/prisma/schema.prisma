@@ -37,5 +37,5 @@ model Agendamento {
   professor Professor? @relation(fields: [professor_id], references: [id])
   professor_id Int
   data_inicio  DateTime @db.Date
-  data_fim DateTime @db.Date 
+  data_fim DateTime? @db.Date
 }
