@@ -100,7 +100,8 @@ const LayoutHeader = (props: ChildrenProps) => {
           style={{
             margin: "0px",
             padding: 0,
-            height: "auto",
+            minHeight: '100vh',
+            maxHeight: '100%'
           }}
         >
           <div className='w-full h-auto flex justify-center'>
