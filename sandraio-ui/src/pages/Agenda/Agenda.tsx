@@ -122,6 +122,7 @@ export default function Agenda() {
   }, []);
 
   const getEvents = (agendamentos: any) => {
+    console.log(agendamentos);
     setEvents(agendamentos.map((item: any) => {
       return {
         start: moment(item.data_inicio).toDate(),
