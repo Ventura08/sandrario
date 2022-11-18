@@ -9,17 +9,15 @@ function Home() {
       <div>
          <div className="home">
 
-            <div className="home__box">
-               <div className="home__box--rodinha">
-                  <Rodinha />
-               </div>
+            <div className="home__box--rodinha">
+               <Rodinha />
 
-               <div className="home__box--blog blog1">
-                  <Blog1 />
-               </div>
             </div>
 
             <div className="home__box">
+               <div className="home__box--blog blog1">
+                  <Blog1 />
+               </div>
                <div className="home__box--blog blog2">
                   <Blog2 />
                </div>

@@ -5,8 +5,9 @@ import BlogImg from '../../assets/blog1.svg'
 
 function Blog1() {
     return (
-        <div >
-            <div className="cartao">
+        <div className="box--flex" >
+            <img src={BlogImg} alt="Banner do cartao" className="cartao__imagem--cima" />
+            <div className="cartao cartao--cima box--top">
 
                 <div className="cartao__conteudo">
                     <h3 className="cartao__titulo">A importancia de se manter organizado</h3>
@@ -25,7 +26,6 @@ function Blog1() {
                         src={Seta} /></a>
                 </div>
             </div>
-            <img src={BlogImg} alt="Banner do cartao" className="cartao__imagem" />
         </div>
     )
 }

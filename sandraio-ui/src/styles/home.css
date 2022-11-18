@@ -7,7 +7,7 @@
     display: flex;
     color: #FFFFFF;
     justify-content: space-evenly;
-    margin-bottom: 50px;
+    margin: 50px 0;
 }
 
 .rodinha {
@@ -26,7 +26,7 @@
 .home__box--blog {
     display: flex;
     align-items: center;
-    width: 45%;
+    width: 30%;
 }
 
 .cartao {
@@ -34,6 +34,10 @@
     border-radius: 16px 16px 0 0;
     overflow: hidden;
     background-color: #2C343A;
+}
+
+.cartao__imagem--cima {
+    border-radius: 16px 16px 0 0;
 }
 
 .cartao.cartao--cima {
@@ -45,6 +49,8 @@
     display: flex;
     flex-direction: column;
     text-align: initial;
+    height: 500px;
+    justify-content: space-between;
 }
 
 .cartao__conteudo--flex {
@@ -107,6 +113,3 @@ img.cartao__imagem {
     border-radius: 0 0 16px 16px;
 }
 
-.blog1 .cartao {
-    width: 450px;
-}
