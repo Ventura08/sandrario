@@ -2,17 +2,16 @@
 
 .box--primeiro {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    height: 700px;
 }
 
 .texto--antes {
-    font-size: 34px;
-    width: 35%;
+    font-size: 26px;
     background-color: var(--roxo-escuro);
-    padding: 55px 25px;
-    border-radius: 70px;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px;
 }
 
 .texto--antes h1 {
@@ -25,7 +24,7 @@
 
 .circle-orbit-container {
     position: relative;
-    margin: 100px;
+    margin: 130px;
     width: 400px;
     height: 400px;
     left: -50px;
@@ -120,15 +119,15 @@
 }
 
 .ring-0>*:nth-of-type(2) {
-    transform: rotate(130deg) translate(16em) rotate(-130deg);
+    transform: rotate(125deg) translate(16em) rotate(-125deg);
 }
 
 .ring-0>*:nth-of-type(3) {
-    transform: rotate(210deg) translate(24em) rotate(-210deg);
+    transform: rotate(205deg) translate(24em) rotate(-205deg);
 }
 
 .ring-0>*:nth-of-type(4) {
-    transform: rotate(280deg) translate(21em) rotate(-280deg);
+    transform: rotate(270deg) translate(21em) rotate(-270deg);
 }
 
 .ring-0 {
